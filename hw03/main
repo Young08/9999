@@ -1,0 +1,44 @@
+class shape(object):
+    '''形状'''
+    @property
+    def area(self):
+        pass
+
+class rectangle(shape):
+    '''矩形'''
+    def __init__(self,width=0,height=0):
+        super().__init__()
+        self.width=width
+        self.height=height
+        
+    @property
+    def area(self):
+        return self.width*self.height
+
+class square(rectangle):
+    '''正方形'''
+    def __init__(self,side=0):
+        super().__init__(side,side)
+
+class ellipse(shape):
+    '''椭圆形'''
+    pi=3.1415926535
+    def __init__(self,a=0,b=0):
+        super().__init__()
+        self.a=a
+        self.b=b
+        
+    @property
+    def area(self):
+        return self.a*self.b*self.pi
+
+class circle(ellipse):
+    '''圆形'''
+    def __init__(self,r=0):
+        super().__init__(r,r)
+
+shape=[ellipse(10,20), square(15), circle(5), rectangle(20,15), circle(5), square(15), ellipse(10,20)]
+areas = [x.area for x in shape]
+print('areas: ', areas)
+total_area = sum(areas)
+print('total_area: ', total_area)
